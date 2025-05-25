@@ -1,59 +1,42 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const SignUpForm = () => {
-    //getter y setter para los estados
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [address, setAddress] = useState('');
-    const [zipCode, setZipCode] = useState('');
-    const [phone, setPhone] = useState('');
+    const {register, handleSubmit, reset, formState:{errors}} = useForm();
 
     function handleClearClick(){
-        setName ('');
-        setAge ('');
-        setAddress ('');
-        setZipCode ('');
-        setPhone ('');
-        
+        reset();
     }
 
-    function hanbleSubmitForm(event){
-        event.preventDefault();
-        console.log("2submit", {
-            name,
-            age,
-            zipCode,
-            address,
-            phone
-        });
+    function hanbleSubmitForm(data){
+        console.log(data);
         
     }
 
     return (
-        <form onSubmit={hanbleSubmitForm}>
+        <form onSubmit={handleSubmit(hanbleSubmitForm)}>
             <label >
                 Name
-                <input value={name} onChange={(event) => setName(event.target.value)} required/>
+                <input {...register('name', {required:true})} />
             </label>
             <br />
             <label >
                 Age
-                <input value={age} onChange={(event) => setAge(event.target.value)} required/>
+                <input {...register('age', {required:true})} />
             </label>
             <br />
             <label >
                 Address
-                <input value={address} onChange={(event) => setAddress(event.target.value)} required/>
+                <input {...register('address', {required:true})} />
             </label>
             <br />
             <label >
                 Zip Code
-                <input value={zipCode} onChange={(event) => setZipCode(event.target.value)} required/>
+                <input {...register('zipCode', {required:true})} />
             </label>
             <br />
             <label >
                 Phone
-                <input value={phone} onChange={(event) => setPhone(event.target.value)} required/>
+                <input {...register('phone', {required:true})} />
             </label>
 
             <div>
