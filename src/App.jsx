@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import Events from './components/Events'
+import SignUpForm from './components/SignUpForm'
 
 function App() {
   const [searchText, setSearchText] = useState('');
@@ -15,9 +16,9 @@ function App() {
 
   return (
     <>
-      <Navbar onSearch={handleNavbarSearch} />
-      <Events searchText={searchText}/>
-
+      {/*<Navbar onSearch={handleNavbarSearch} />
+      <Events searchText={searchText}/>*/}
+      <SignUpForm />
     </>
   )
 }
