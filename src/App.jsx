@@ -5,9 +5,10 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Events from './components/Events'
 import SignUpForm from './components/SignUpForm'
+import  Routes  from './routes'
 
 function App() {
-  const [searchText, setSearchText] = useState('');
+  /*const [searchText, setSearchText] = useState('');
 
   function handleNavbarSearch(text){
       setSearchText(text);
@@ -19,7 +20,8 @@ function App() {
       <Navbar onSearch={handleNavbarSearch} />
       <Events searchText={searchText}/>
     </>
-  )
+  )*/
+return <Routes/>
 }
 
 export default App
