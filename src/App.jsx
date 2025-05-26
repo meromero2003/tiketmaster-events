@@ -16,9 +16,8 @@ function App() {
 
   return (
     <>
-      {/*<Navbar onSearch={handleNavbarSearch} />
-      <Events searchText={searchText}/>*/}
-      <SignUpForm />
+      <Navbar onSearch={handleNavbarSearch} />
+      <Events searchText={searchText}/>
     </>
   )
 }

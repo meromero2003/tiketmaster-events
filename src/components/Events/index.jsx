@@ -1,13 +1,11 @@
 import { useState } from "react";
 import EventItem from "./Components/EventItem";
-import eventsJSON from "../../data/events.json";
+import useEventsData from "../../hooks/useEventsData";
 
 //searchText viene desde app
-const Events = ({searchText}) => {
+const Events = ({ searchText }) => {
 
-    const [data] = useState(eventsJSON);
-    //Lista con los eventos
-    const events = data._embedded.events;
+    const {events} = useEventsData();
 
     function handleEventItemClick(id) {
         console.log("Evento Clickeado", id);
@@ -17,29 +15,29 @@ const Events = ({searchText}) => {
         let eventsFiltered = events;
 
         if (searchText.length > 0) {
-            eventsFiltered = eventsFiltered.filter((item)=> item.name.toLocaleLowerCase().includes(searchText));
+            eventsFiltered = eventsFiltered.filter((item) => item.name.toLocaleLowerCase().includes(searchText));
         }
         //else
         return eventsFiltered.map((eventItem) => (
             <EventItem
-               key={`event-item-${eventItem.id}`}
-               id={eventItem.id}
-               name={eventItem.name}
-               info={eventItem.info}
-               image={eventItem.images[0].url}
-               onEventClick={handleEventItemClick}
+                key={`event-item-${eventItem.id}`}
+                id={eventItem.id}
+                name={eventItem.name}
+                info={eventItem.info}
+                image={eventItem.images[0].url}
+                onEventClick={handleEventItemClick}
 
-             />
+            />
         ));
     };
 
-return (
-    <div>
-        <p>Eventos</p>
-        {renderEvents()}
+    return (
+        <div>
+            <p>Eventos</p>
+            {renderEvents()}
 
-    </div>
-);
+        </div>
+    );
 
 };
 
