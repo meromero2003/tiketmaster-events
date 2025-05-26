@@ -5,7 +5,7 @@ import useEventsData from "../../hooks/useEventsData";
 //searchText viene desde app
 const Events = ({ searchText }) => {
 
-    const {events} = useEventsData();
+    const {events, isLoading, error} = useEventsData();
 
     function handleEventItemClick(id) {
         console.log("Evento Clickeado", id);
@@ -30,6 +30,13 @@ const Events = ({ searchText }) => {
             />
         ));
     };
+
+    if (error) {
+        return <div>Ha ocurrido un error</div>;
+    }
+    if (isLoading) {
+        return <div>Cargando resultados...</div>;
+    }
 
     return (
         <div>
